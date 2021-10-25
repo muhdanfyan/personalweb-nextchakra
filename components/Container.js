@@ -24,6 +24,10 @@ const Container = ({ children }) => {
         dark: 'gray.300'
     }
 
+    const color = {
+        light: 'black',
+        dark: 'white'
+    }
     const StickNav = styled(Flex)`
         position : sticky;
         z-index : 10;
@@ -40,9 +44,25 @@ const Container = ({ children }) => {
                             Home
                         </Button>
                     </NextLink>
+                    <NextLink href="/blog" passHref>
+                        <Button as="a" variant="ghost" p={[1,2,4]} _hover={{ backgroundColor: navHoverBg[colorMode]}}>
+                            Blog
+                        </Button>
+                    </NextLink>
                 </Box>
                 <DarkModeSwitch />
             </StickNav>
+            <Flex
+                as="main"
+                justifyContent="center"
+                flexDirection="column"
+                bg={bgColor[colorMode]}
+                color={color[colorMode]}
+                px={[0, 4, 4]}
+                mt={[4, 8, 8]}
+            >
+                {children}
+            </Flex>
         </>
     )
 }
